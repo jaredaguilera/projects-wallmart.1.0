@@ -23,7 +23,7 @@ public class ProductsServiceImpl implements ProductsService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Products> findById(Long id) {
+	public Products findById(Long id) {
 		return productsRepository.findById(id);
 	}
 

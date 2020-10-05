@@ -27,7 +27,7 @@ public class ProductsController {
 	}
 
 	@GetMapping("/getproductsbyid/{id}")
-	public List<Products> getProductsById (@PathVariable("id") String id){
+	public Products getProductsById (@PathVariable("id") String id){
 		final Long idParse = Long.parseLong(id);
 		return productsService.findById(idParse);
 	}
