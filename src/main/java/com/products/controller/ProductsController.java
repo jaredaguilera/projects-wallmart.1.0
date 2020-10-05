@@ -29,13 +29,7 @@ public class ProductsController {
 	@GetMapping("/getproductsbyid/{id}")
 	public List<Products> getProductsById (@PathVariable("id") String id){
 		final Long idParse = Long.parseLong(id);
-		System.out.println(idParse);
 		return productsService.findById(idParse);
 	}
 
-	@GetMapping("/getproductsbybrand/{name}")
-	public List<Products> getProductsByBrand (@PathVariable("name") String name){
-		System.out.println(name);
-		return productsService.getProductsByBrand(name);
-	}
 }

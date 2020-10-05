@@ -27,10 +27,4 @@ public class ProductsServiceImpl implements ProductsService {
 		return productsRepository.findById(id);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Products> getProductsByBrand(String brand) {
-		return productsRepository.getProductsByBrand(brand);
-	}
-
 }

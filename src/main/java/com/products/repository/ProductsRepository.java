@@ -13,6 +13,4 @@ public interface ProductsRepository extends MongoRepository<Products, ObjectId> 
 	
    public List<Products> findById(Long id);
 
-   public List<Products> getProductsByBrand(String brand);
-   
 }
