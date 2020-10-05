@@ -1,6 +1,7 @@
 package com.products.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,19 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Products> findAll() {
-		return productsRepository.findAll() ;
+		return productsRepository.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Products> findById(Long id) {
+		return productsRepository.findById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Products> findByDescriptionOrBrand(String brand, String description) {
+		return productsRepository.findByDescriptionOrBrand(brand, description);
 	}
 
 }
