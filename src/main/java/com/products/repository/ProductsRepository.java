@@ -1,18 +1,18 @@
 package com.products.repository;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import com.products.entity.Products;
 
 @Repository
-public interface ProductsRepository extends MongoRepository<Products, Long>  {
+public interface ProductsRepository extends MongoRepository<Products, ObjectId>  {
 	
-   Optional<Products> findById(Long id);
+   public List<Products> findById(Long id);
 
-   Optional<Products> findByDescriptionOrBrand(String brand, String description);
+   public List<Products> getProductsByBrand(String brand);
    
 }

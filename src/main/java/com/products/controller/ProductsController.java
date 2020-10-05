@@ -1,7 +1,6 @@
 package com.products.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,14 +27,15 @@ public class ProductsController {
 	}
 
 	@GetMapping("/getproductsbyid/{id}")
-	public Optional<Products> getProductsById (@PathVariable("id") String id){
+	public List<Products> getProductsById (@PathVariable("id") String id){
 		final Long idParse = Long.parseLong(id);
 		System.out.println(idParse);
 		return productsService.findById(idParse);
 	}
 
-	@GetMapping("/getproductsbybrandordescription/{name}")
-	public Optional<Products> getProductsByBrandOrDescription (@PathVariable("name") String name){
-		return productsService.findByDescriptionOrBrand(name,name);
+	@GetMapping("/getproductsbybrand/{name}")
+	public List<Products> getProductsByBrand (@PathVariable("name") String name){
+		System.out.println(name);
+		return productsService.getProductsByBrand(name);
 	}
 }
