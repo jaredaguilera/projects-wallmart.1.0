@@ -6,6 +6,6 @@ When method GET
 Then status 200
 
 Scenario: Test List of productsById
-Given url 'http://localhost:8888/products/getproductsbyid/232'
+Given url 'http://localhost:8888/products/getproductsbyid/1'
 When method GET
 Then status 200

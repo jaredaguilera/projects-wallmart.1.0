@@ -1,5 +1,4 @@
 FROM openjdk:8-jdk-slim
-VOLUME /tmp
-EXPOSE 8888
-ADD /target/projectsWallmart.1.0.jar projectsWallmart.1.0.jar
-ENTRYPOINT ["java","-jar","/projectsWallmart.1.0.jar"]
+COPY "./target/projectsWallmart.1.0.jar" "app.jar"
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
