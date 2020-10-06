@@ -20,7 +20,6 @@ public class ProductsServiceImpl implements ProductsService {
 	@Autowired
 	private ProductsRepository productsRepository;
 	
-    ResponseEntity<Products> refundEntity = null;
 
 	@Override
 	@Transactional(readOnly = true)
