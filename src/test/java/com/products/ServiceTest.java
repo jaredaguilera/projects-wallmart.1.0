@@ -1,4 +1,6 @@
 package com.products;
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,15 +19,14 @@ public class ServiceTest {
 	ProductsService productsService;
 
 	@Test
-	public void findAllTest() {
+	public void findAllTest() throws IOException {
 		boolean result = productsService.findAll() != null;
 		Assert.assertTrue(result);
 	}
 	
 	@Test
-	public void findByIdTest() {
-		Long id = 200L;
-		System.out.println(id);
-		Assert.assertEquals(1,productsService.findById(id));
+	public void findByIdTest() throws IOException {
+		Long id = 1L;
+		Assert.assertNotNull(productsService.findById(id));
 	}
 }

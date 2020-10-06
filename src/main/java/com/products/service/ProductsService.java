@@ -1,13 +1,16 @@
 package com.products.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 
 import com.products.entity.Products;
 
 public interface ProductsService {
 
-	public List<Products> findAll();
+	public ResponseEntity<List<Products>> findAll() throws IOException;
 	
-	public Products findById(Long id);
+	public ResponseEntity<Products> findById(Long id) throws IOException;
 
 }
