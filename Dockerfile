@@ -1,9 +1,20 @@
-FROM ubuntu
-RUN apt-get update
-RUN apt-get -y install maven
-WORKDIR /home
-COPY . /home/app
-WORKDIR /home/app
-RUN mvn clean install
-EXPOSE 8888
-RUN java -jar ./target/projectsWallmart.1.0.jar
+FROM openjdk:8-jdk-alpine as build
+WORKDIR /workspace/app
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+
+RUN ./mvnw install -DskipTests
+
+FROM openjdk:8-jdk-alpine
+
+VOLUME /tmp
+
+ARG APP_NAME
+ARG DEPENDENCY=/workspace/app/target
+ARG ARTIFACT_NAME
+ENV APP_NAME=$APP_NAME
+COPY --from=build /workspace/app/target/projectsWallmart.1.0.jar /app/projectsWallmart.jar
+ENTRYPOINT ["java","-jar","/app/projectsWallmart.jar"]
