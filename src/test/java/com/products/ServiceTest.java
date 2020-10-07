@@ -29,4 +29,10 @@ public class ServiceTest {
 		Long id = 1L;
 		Assert.assertNotNull(productsService.findById(id));
 	}
+	
+	@Test
+	public void findByIdNotFoundTest() throws IOException {
+		Long id = 3001L;
+		Assert.assertNotNull(productsService.findById(id));
+	}
 }
