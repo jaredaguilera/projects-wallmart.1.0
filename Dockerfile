@@ -1,5 +1,8 @@
-FROM openjdk:8-jdk-slim
-ARG JAR_FILE=target/projectsWallmart.1.0.jar
-ADD ${JAR_FILE} "app.jar"
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+FROM ubuntu
+RUN apt-get update
+RUN apt-get -y install maven
+WORKDIR /home
+COPY . /home/app
+WORKDIR /home/app
+RUN mvn clean install
+RUN java -jar ./target/listener-0.0.1-SNAPSHOT.jar

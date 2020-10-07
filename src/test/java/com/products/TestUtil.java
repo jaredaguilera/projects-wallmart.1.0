@@ -16,12 +16,5 @@ public class TestUtil {
       MediaType.APPLICATION_JSON.getType(),
       MediaType.APPLICATION_JSON.getSubtype(), StandardCharsets.UTF_8);
 
-  public static String asJsonString(final Object obj) {
-    try {
-      return new ObjectMapper().writeValueAsString(obj);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-  }
 
 }

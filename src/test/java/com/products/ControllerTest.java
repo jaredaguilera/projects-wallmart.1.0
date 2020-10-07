@@ -41,17 +41,18 @@ public class ControllerTest {
   }
 
   @Test
-  public void getProducts()
-      throws Exception {
+  public void getProducts() throws Exception {
     mockMvc.perform(get("/products/getproducts")
         .contentType(TestUtil.APPLICATION_JSON_UTF8)).andExpect(status().isOk());
   }
 
   @Test
-  public void getProductsById()throws Exception {
+  public void getProductsById() throws Exception {
 	Long id = 1L;
     mockMvc.perform(get("/products/getproductsbyid/" + id)
         .contentType(TestUtil.APPLICATION_JSON_UTF8)).andExpect(status().isOk());
   }
+  
+ 
   
 }

@@ -1,6 +1,5 @@
 package com.products.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,20 +30,20 @@ public class ProductsController {
 	 * Busqueda completa de productos
 	 */
 	@GetMapping("/getproducts")
-	public ResponseEntity<List<Products>> getProducts() throws IOException{
+	public ResponseEntity<List<Products>> getProducts(){
 		return productsService.findAll();
 		
 	}
 	
 	/**
-	 * Busqueda completa por ID productos
+	 * Busqueda por ID productos
 	 */
 	@GetMapping("/getproductsbyid/{id}")
-	public ResponseEntity<Products> getProductsById (@PathVariable("id") String id) throws IOException{
+	public ResponseEntity<Products> getProductsById (@PathVariable("id") String id){
 		try {
 			final Long idParse = Long.parseLong(id);
 			return productsService.findById(idParse);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			throw new ProductsException(e.getMessage());
 		}
 		

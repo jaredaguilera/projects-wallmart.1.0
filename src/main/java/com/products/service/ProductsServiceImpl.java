@@ -1,6 +1,5 @@
 package com.products.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class ProductsServiceImpl implements ProductsService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public ResponseEntity<List<Products>> findAll() throws IOException {
+	public ResponseEntity<List<Products>> findAll(){
 		List<Products> productsList = new ArrayList<Products>();
 		ResponseEntity<List<Products>> refundEntity = new ResponseEntity<List<Products>>(HttpStatus.OK);
 		try {
@@ -37,12 +36,16 @@ public class ProductsServiceImpl implements ProductsService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public ResponseEntity<Products> findById(Long id) throws IOException  {
+	public ResponseEntity<Products> findById(Long id){
 		Products product = new Products();
 		ResponseEntity<Products> refundEntity = new ResponseEntity<Products>(HttpStatus.OK);
 		try {
 			product = productsRepository.findById(id);
-			refundEntity = new ResponseEntity<Products>(product,HttpStatus.OK);
+			if (product != null) {
+				refundEntity = new ResponseEntity<Products>(product,HttpStatus.OK);
+			}else {
+				refundEntity = new ResponseEntity<Products>(product,HttpStatus.NOT_FOUND);
+			}
 		} catch (ProductsException e) {
 			throw new ProductsException(e.getMessage());
 		}
