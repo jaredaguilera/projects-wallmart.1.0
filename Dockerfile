@@ -5,4 +5,5 @@ WORKDIR /home
 COPY . /home/app
 WORKDIR /home/app
 RUN mvn clean install
-RUN java -jar ./target/listener-0.0.1-SNAPSHOT.jar
+EXPOSE 8888
+RUN java -jar ./target/projectsWallmart.1.0.jar
