@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,34 +20,30 @@ public class ProductsServiceImpl implements ProductsService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public ResponseEntity<List<Products>> findAll(){
+	public List<Products> findAll(){
 		List<Products> productsList = new ArrayList<Products>();
-		ResponseEntity<List<Products>> refundEntity = new ResponseEntity<List<Products>>(HttpStatus.OK);
 		try {
 			productsList = productsRepository.findAll();
-			refundEntity = new ResponseEntity<List<Products>>(productsList,HttpStatus.OK);
 		} catch (ProductsException e) {
 			throw new ProductsException(e.getMessage());
 		}
-		return refundEntity;
+		return productsList;
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public ResponseEntity<Products> findById(Long id){
+	public List<Products> findById(Long id){
 		Products product = new Products();
-		ResponseEntity<Products> refundEntity = new ResponseEntity<Products>(HttpStatus.OK);
+		List<Products> productsList = new ArrayList<Products>();
 		try {
 			product = productsRepository.findById(id);
 			if (product != null) {
-				refundEntity = new ResponseEntity<Products>(product,HttpStatus.OK);
-			}else {
-				refundEntity = new ResponseEntity<Products>(product,HttpStatus.NOT_FOUND);
+				productsList.add(product);
 			}
 		} catch (ProductsException e) {
 			throw new ProductsException(e.getMessage());
 		}
-		return refundEntity;
+		return productsList;
 	}
 
 }

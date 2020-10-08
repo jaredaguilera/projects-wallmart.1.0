@@ -42,17 +42,23 @@ public class ControllerTest {
 
   @Test
   public void getProducts() throws Exception {
-    mockMvc.perform(get("/products/getproducts")
+    mockMvc.perform(get("/")
         .contentType(TestUtil.APPLICATION_JSON_UTF8)).andExpect(status().isOk());
   }
 
   @Test
   public void getProductsById() throws Exception {
 	Long id = 1L;
-    mockMvc.perform(get("/products/getproductsbyid/" + id)
+    mockMvc.perform(get("/?id=123" + id)
         .contentType(TestUtil.APPLICATION_JSON_UTF8)).andExpect(status().isOk());
   }
   
+  @Test
+  public void getProductsByBrandOrDescription() throws Exception {
+	Long id = 1L;
+    mockMvc.perform(get("/?id=tblb" + id)
+        .contentType(TestUtil.APPLICATION_JSON_UTF8)).andExpect(status().isOk());
+  }
  
   
 }

@@ -1,7 +1,7 @@
 package com.products;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
+
 import org.springframework.http.MediaType;
 
 /**
