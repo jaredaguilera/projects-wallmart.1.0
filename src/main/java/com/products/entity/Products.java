@@ -17,6 +17,7 @@ public class Products implements Serializable {
 	private String description;
 	private String image;
 	private Double price;
+	private Double priceLowered;
 
 	public Products() {
 	}
@@ -76,11 +77,18 @@ public class Products implements Serializable {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	public Double getPriceLowered() {
+		return priceLowered;
+	}
+
+	public void setPriceLowered(Double priceLowered) {
+		this.priceLowered = priceLowered;
+	}
 
 	@Override
 	public String toString() {
 		return "Products [_id=" + _id + ", id=" + id + ", brand=" + brand + ", description=" + description + ", image="
-				+ image + ", price=" + price + "]";
+				+ image + ", price=" + price + ", priceLowered=" + priceLowered + "]";
 	}
-
 }
